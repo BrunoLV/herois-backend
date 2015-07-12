@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Tela de listagem de herois.
+  Developer: Bruno Luiz Viana
+  Date: 09/07/15
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich" xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+    <ui:define name="content">
+        <br/>
+        <h:form id="formListagem">
+            <rich:dataTable value="#{heroiMB.heroiList}" var="heroi">
+                <rich:column>
+                    <f:facet name="header"><h:outputText value="#{msgs['table.codigo.label']}"/></f:facet>
+                    <h:outputText value="#{heroi.codigo}"/>
+                </rich:column>
+                <rich:column>
+                    <f:facet name="header"><h:outputText value="#{msgs['table.nome.label']}"/></f:facet>
+                    <h:outputText value="#{heroi.nome}"/>
+                </rich:column>
+                <rich:column>
+                    <f:facet name="header"><h:outputText value="#{msgs['table.editora.label']}"/></f:facet>
+                    <h:outputText value="#{heroi.editora}"/>
+                </rich:column>
+                <rich:column>
+                    <f:facet name="header"><h:outputText value="#{msgs['table.anoPublica.label']}"/></f:facet>
+                    <h:outputText value="#{heroi.anoPublicacao}"/>
+                </rich:column>
+            </rich:dataTable>
+            <br/>
+            <h:commandButton value="#{msgs['button.exportar.label']}" action="#{heroiMB.exportarHeroisToExcel}"/>
+        </h:form>
+        <br/>
+    </ui:define>
+</ui:composition>
+
+</html>
